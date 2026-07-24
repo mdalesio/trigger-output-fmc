@@ -21907,7 +21907,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805"
+		(property "Description" "CAP CER 22UF 25V X5R 0805"
 			(at 34.29 214.63 0)
 			(effects
 				(font
@@ -21916,7 +21916,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21A226MOCLRNC"
+		(property "MPN" "KGM21AR51E226MU"
 			(at 34.29 214.63 0)
 			(effects
 				(font
@@ -21925,7 +21925,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung"
+		(property "Manufacturer" "KYOCERA AVX"
 			(at 34.29 214.63 0)
 			(effects
 				(font
@@ -34862,7 +34862,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805"
+		(property "Description" "CAP CER 22UF 25V X5R 0805"
 			(at 34.29 189.23 0)
 			(effects
 				(font
@@ -34871,7 +34871,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21A226MOCLRNC"
+		(property "MPN" "KGM21AR51E226MU"
 			(at 34.29 189.23 0)
 			(effects
 				(font
@@ -34880,7 +34880,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung"
+		(property "Manufacturer" "KYOCERA AVX"
 			(at 34.29 189.23 0)
 			(effects
 				(font
@@ -37049,7 +37049,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805"
+		(property "Description" "CAP CER 22UF 25V X5R 0805"
 			(at 34.29 237.49 0)
 			(effects
 				(font
@@ -37058,7 +37058,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21A226MOCLRNC"
+		(property "MPN" "KGM21AR51E226MU"
 			(at 34.29 237.49 0)
 			(effects
 				(font
@@ -37067,7 +37067,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung"
+		(property "Manufacturer" "KYOCERA AVX"
 			(at 34.29 237.49 0)
 			(effects
 				(font

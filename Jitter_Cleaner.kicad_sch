@@ -6233,7 +6233,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 16V X7R 0603"
+		(property "Description" "CAP CER 1UF 25V X7R 0603"
 			(at 285.75 88.9 0)
 			(effects
 				(font
@@ -6242,7 +6242,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GCM188R71C105KA64D"
+		(property "MPN" "GCM188R71E105KA64D"
 			(at 285.75 88.9 0)
 			(effects
 				(font
@@ -7365,7 +7365,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 16V X7R 0603"
+		(property "Description" "CAP CER 1UF 25V X7R 0603"
 			(at 269.24 105.41 0)
 			(effects
 				(font
@@ -7374,7 +7374,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GCM188R71C105KA64D"
+		(property "MPN" "GCM188R71E105KA64D"
 			(at 269.24 105.41 0)
 			(effects
 				(font
@@ -9141,7 +9141,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 16V X7R 0603"
+		(property "Description" "CAP CER 1UF 25V X7R 0603"
 			(at 193.04 106.68 0)
 			(effects
 				(font
@@ -9150,7 +9150,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GCM188R71C105KA64D"
+		(property "MPN" "GCM188R71E105KA64D"
 			(at 193.04 106.68 0)
 			(effects
 				(font
@@ -10780,7 +10780,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 16V X7R 0603"
+		(property "Description" "CAP CER 1UF 25V X7R 0603"
 			(at 184.15 88.9 0)
 			(effects
 				(font
@@ -10789,7 +10789,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GCM188R71C105KA64D"
+		(property "MPN" "GCM188R71E105KA64D"
 			(at 184.15 88.9 0)
 			(effects
 				(font

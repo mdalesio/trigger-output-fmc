@@ -1574,7 +1574,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 16V X7R 0603"
+		(property "Description" "CAP CER 1UF 25V X7R 0603"
 			(at 133.35 86.36 0)
 			(effects
 				(font
@@ -1583,7 +1583,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GCM188R71C105KA64D"
+		(property "MPN" "GCM188R71E105KA64D"
 			(at 133.35 86.36 0)
 			(effects
 				(font
