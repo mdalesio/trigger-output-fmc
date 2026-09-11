@@ -21,6 +21,6 @@ This repository contains KiCad 9.0.4 design files.
 
 ## Status
 
-Incomplete, under development, and not yet produced.
+Revision 1.0 produced and tested.
 
-![Preview Render](images/render.png)
+![Image](images/trigger-output-fmc.jpg)
