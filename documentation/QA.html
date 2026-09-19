@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.11" />
+  <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>QA</title>
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -26,6 +20,7 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
 </head>
@@ -84,7 +79,7 @@ resistance to board ground greater than 1kΩ.</p>
 <col style="width: 27%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Silkscreened Label</th>
 <th>Nominal Voltage</th>
 <th>Measured Resistance (Ω)</th>
@@ -92,49 +87,49 @@ resistance to board ground greater than 1kΩ.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>VDD3P3V</td>
 <td>+3.3V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>VADJ</td>
 <td>+2.5V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>12P0V</td>
 <td>+12V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>TP5</td>
 <td>+1.8V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>TP6</td>
 <td>+3.3V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>TP7</td>
 <td>+3.3V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>TP8</td>
 <td>+5.45V</td>
 <td><input type="text"></td>
 <td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>TP9</td>
 <td>+1.8V</td>
 <td><input type="text"></td>
@@ -153,7 +148,7 @@ points found on the board. Do this with a 1.5A current limit.</p>
 <p>Note variance from nominal current if found.</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Rail</th>
 <th>Nominal Expected</th>
 <th>Measured Current</th>
@@ -161,19 +156,19 @@ points found on the board. Do this with a 1.5A current limit.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>12V</td>
 <td>~130mA</td>
 <td><input type="text"></td>
 <td><input type="text"></td>
 </tr>
-<tr>
+<tr class="even">
 <td>3.3V</td>
 <td>~70mA</td>
 <td><input type="text"></td>
 <td><input type="text"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2.5V</td>
 <td>~4mA</td>
 <td><input type="text"></td>
@@ -192,7 +187,7 @@ Power up all input power rails (12V/3.3V/2.5V) simultaneously.</p>
 <p>Note variance from nominal current if found.</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>Rail</th>
 <th>Nominal Expected</th>
 <th>Measured Current</th>
@@ -200,19 +195,19 @@ Power up all input power rails (12V/3.3V/2.5V) simultaneously.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>12V</td>
 <td>~130mA</td>
 <td><input type="text"></td>
 <td><input type="text"></td>
 </tr>
-<tr>
+<tr class="even">
 <td>3.3V</td>
 <td>~70mA</td>
 <td><input type="text"></td>
 <td><input type="text"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2.5V</td>
 <td>~4mA</td>
 <td><input type="text"></td>
@@ -314,7 +309,7 @@ Complete</strong></li>
 <li><strong>Deviations / Waivers / Comments:</strong>
 <textarea rows="3" cols="60" placeholder="Notes..."></textarea></li>
 <li>Record the git commit of <strong>this QA procedure</strong> in the
-Testing Log: <input type="text" placeholder="Commit..."></li>
+Testing Log: <input type="text" placeholder="Git Commit..."></li>
 </ul>
 <hr>
 <button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
@@ -350,13 +345,14 @@ function copyForSpreadsheet() {
 
   const tsvRow = data.join('\t');
 
-  // 2. Robust Copy Mechanism (Works on file:///, HTTP, and HTTPS)
+  // 2. Robust Copy Mechanism
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(tsvRow).then(showSuccess).catch(fallbackCopy);
   } else {
     fallbackCopy();
   }
 
+  // Fallback clipboard copy mechanism for browser environments where the modern Async Clipboard API (navigator.clipboard.writeText) is unavailable or blocked—such as local file:// protocols, older browsers, or unsecure contexts (http://)
   function fallbackCopy() {
     const tempTextArea = document.createElement('textarea');
     tempTextArea.value = tsvRow;
@@ -383,5 +379,34 @@ function copyForSpreadsheet() {
 <button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
 📄 Print / Save as PDF
 </button>
+<style>
+@media print {
+  /* Hide procedural text, equipment, and instruction steps */
+  .no-print, nav, header, footer {
+    display: none !important;
+  }
+
+  /* Compact spacing for the printed summary page */
+  body {
+    font-size: 11pt;
+    line-height: 1.2;
+    color: #000;
+  }
+
+  /* Make inputs look like clean text instead of form fields */
+  input[type="text"], input[type="date"], textarea {
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    background: transparent !important;
+  }
+
+  /* Ensure tables print cleanly without breaking across pages */
+  table {
+    page-break-inside: avoid;
+    width: 100%;
+    border-collapse: collapse;
+  }
+}
+</style>
 </body>
 </html>
