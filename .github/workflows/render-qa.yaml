@@ -1,0 +1,36 @@
+name: Render QA Markdown to HTML
+
+on:
+  push:
+    paths:
+      - 'documentation/QA.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Convert QA.md to QA.html
+        run: |
+          pandoc documentation/QA.md \
+            --standalone \
+            -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
+            -o documentation/QA.html
+
+      - name: Commit and Push Updated HTML
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add documentation/QA.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-render QA.md to QA.html" && git push)
