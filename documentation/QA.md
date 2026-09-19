@@ -147,6 +147,7 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 * **Deviations / Waivers / Comments:**
 <textarea rows="3" cols="60" placeholder="Notes..."></textarea>
 
+<div class="no-print">
 * Record the git commit of **this QA procedure** in the Testing Log:
 <input type="text" placeholder="Git Commit...">
 
@@ -155,6 +156,10 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
   📋 Copy Row for Spreadsheet
 </button>
 <span id="copy-status" style="margin-left: 10px; color: #28a745; font-weight: bold;"></span>
+<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
+  📄 Print / Save as PDF
+</button>
+</div>
 
 <script>
 function copyForSpreadsheet() {
@@ -215,10 +220,6 @@ function copyForSpreadsheet() {
   }
 }
 </script>
-
-<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
-  📄 Print / Save as PDF
-</button>
 
 <style>
 @media print {

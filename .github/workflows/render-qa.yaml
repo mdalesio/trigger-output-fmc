@@ -1,36 +1,64 @@
-name: Render QA Markdown to HTML
+name: QA Procedure HTML Build
 
 on:
-  push:
-    paths:
-      - 'documentation/QA.md'
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Automation"] # KiBot workflow
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch: # Allows manual run if needed
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  convert-markdown:
+  build-and-deploy-qa:
+    name: Build QA & Deploy to Pages
     runs-on: ubuntu-latest
+    # Only run if the Automation workflow succeeded on main
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Download KiBot Fab Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Everything
+          path: output
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Install Pandoc
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Convert QA.md to QA.html
+      - name: Convert QA.md to HTML
         run: |
+          mkdir -p output/qa
           pandoc documentation/QA.md \
             --standalone \
             -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
-            -o documentation/QA.html
+            -o output/qa/index.html
 
-      - name: Commit and Push Updated HTML
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add documentation/QA.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-render QA.md to QA.html" && git push)
+      - name: Upload Combined Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
