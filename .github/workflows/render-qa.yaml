@@ -1,0 +1,64 @@
+name: QA Procedure HTML Build
+
+on:
+  workflow_run:
+    workflows: ["Automation"] # KiBot workflow
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch: # Allows manual run if needed
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy-qa:
+    name: Build QA & Deploy to Pages
+    runs-on: ubuntu-latest
+    # Only run if the Automation workflow succeeded on main
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download KiBot Fab Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Everything
+          path: output
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Convert QA.md to HTML
+        run: |
+          mkdir -p output/qa
+          pandoc documentation/QA.md \
+            --standalone \
+            -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
+            -o output/qa/index.html
+
+      - name: Upload Combined Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
