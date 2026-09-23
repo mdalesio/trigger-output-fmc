@@ -156,10 +156,10 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
   📋 Copy Row for Spreadsheet
 </button>
 <span id="copy-status" style="margin-left: 10px; color: #28a745; font-weight: bold;"></span>
-<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
+<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
   📄 Print / Save as PDF
 </button>
-<button type="reset">Clear All Fields</button>
+<button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;>Clear All Fields</button>
 </div>
 
 <script>
