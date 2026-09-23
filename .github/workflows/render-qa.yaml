@@ -8,6 +8,7 @@ on:
     types:
       - completed
     branches:
+      - main
       - Add-QA
   workflow_dispatch: # Allows manual run if needed
 
@@ -15,10 +16,11 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: 'pages'
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy-qa:
@@ -41,10 +43,11 @@ jobs:
 
       # NOTE: For testing on Add-QA without running KiBot first,
       # create the output directory so pandoc step doesn't fail
-      - name: Prepare Output Directory
+      - name: Create Output Directory
         run: mkdir -p output
 
       - name: Download KiBot Fab Artifact
+        if: github.event_name == 'workflow_run'
         uses: actions/download-artifact@v4
         with:
           name: Everything
