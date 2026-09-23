@@ -125,10 +125,16 @@ and edit `createEEPROMs.sh` with the appropriate serial numbers.
 - [<input type="checkbox">] Look at each of the 16 outputs to ensure compliance.
 
 **Channels Checked:**
-[<input type="checkbox">] Ch 0 &nbsp; [<input type="checkbox">] Ch 1 &nbsp; [<input type="checkbox">] Ch 2 &nbsp; [<input type="checkbox">] Ch 3 &nbsp;
-[<input type="checkbox">] Ch 4 &nbsp; [<input type="checkbox">] Ch 5 &nbsp; [<input type="checkbox">] Ch 6 &nbsp; [<input type="checkbox">] Ch 7 &nbsp;s
-[<input type="checkbox">] Ch 8 &nbsp; [<input type="checkbox">] Ch 9 &nbsp; [<input type="checkbox">] Ch 10 &nbsp; [<input type="checkbox">] Ch 11 &nbsp;
-[<input type="checkbox">] Ch 12 &nbsp; [<input type="checkbox">] Ch 13 &nbsp; [<input type="checkbox">] Ch 14 &nbsp; [<input type="checkbox">] Ch 15 &nbsp;
+| Channel | Status | Channel | Status |
+| :---: | :---: | :---: | :---: |
+| Ch 0  | [<input type="checkbox">] Pass | Ch 8  | [<input type="checkbox">] Pass |
+| Ch 1  | [<input type="checkbox">] Pass | Ch 9  | [<input type="checkbox">] Pass |
+| Ch 2  | [<input type="checkbox">] Pass | Ch 10 | [<input type="checkbox">] Pass |
+| Ch 3  | [<input type="checkbox">] Pass | Ch 11 | [<input type="checkbox">] Pass |
+| Ch 4  | [<input type="checkbox">] Pass | Ch 12 | [<input type="checkbox">] Pass |
+| Ch 5  | [<input type="checkbox">] Pass | Ch 13 | [<input type="checkbox">] Pass |
+| Ch 6  | [<input type="checkbox">] Pass | Ch 14 | [<input type="checkbox">] Pass |
+| Ch 7  | [<input type="checkbox">] Pass | Ch 15 | [<input type="checkbox">] Pass |
 
 - [<input type="checkbox">] **Digital Outputs Signal Check Complete**
 
@@ -154,10 +160,10 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 
 <div class="no-print">
 <hr>
-<button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+<button type="button" onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
   📋 Copy Row for Spreadsheet
 </button>
-<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+<button type="button" onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
   📄 Print / Save as PDF
 </button>
 <button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">

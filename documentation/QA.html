@@ -279,15 +279,19 @@ event stream turning all outputs on and off at 1Hz.</li>
 <li>[<input type="checkbox">] Look at each of the 16 outputs to ensure
 compliance.</li>
 </ul>
-<p><strong>Channels Checked:</strong> [<input type="checkbox">] Ch 0  
-[<input type="checkbox">] Ch 1   [<input type="checkbox">] Ch 2  
-[<input type="checkbox">] Ch 3   [<input type="checkbox">] Ch 4  
-[<input type="checkbox">] Ch 5   [<input type="checkbox">] Ch 6  
-[<input type="checkbox">] Ch 7  s [<input type="checkbox">] Ch 8  
-[<input type="checkbox">] Ch 9   [<input type="checkbox">] Ch 10  
-[<input type="checkbox">] Ch 11   [<input type="checkbox">] Ch 12  
-[<input type="checkbox">] Ch 13   [<input type="checkbox">] Ch 14  
-[<input type="checkbox">] Ch 15  </p>
+<p><strong>Channels Checked:</strong> | Channel | Status | Channel |
+Status | | :—: | :—: | :—: | :—: | | Ch 0 | [<input type="checkbox">]
+Pass | Ch 8 | [<input type="checkbox">] Pass | | Ch 1 |
+[<input type="checkbox">] Pass | Ch 9 | [<input type="checkbox">] Pass |
+| Ch 2 | [<input type="checkbox">] Pass | Ch 10 |
+[<input type="checkbox">] Pass | | Ch 3 | [<input type="checkbox">] Pass
+| Ch 11 | [<input type="checkbox">] Pass | | Ch 4 |
+[<input type="checkbox">] Pass | Ch 12 | [<input type="checkbox">] Pass
+| | Ch 5 | [<input type="checkbox">] Pass | Ch 13 |
+[<input type="checkbox">] Pass | | Ch 6 | [<input type="checkbox">] Pass
+| Ch 14 | [<input type="checkbox">] Pass | | Ch 7 |
+[<input type="checkbox">] Pass | Ch 15 | [<input type="checkbox">] Pass
+|</p>
 <ul>
 <li>[<input type="checkbox">] <strong>Digital Outputs Signal Check
 Complete</strong></li>
@@ -315,10 +319,10 @@ the Testing Log:</p>
 </ul>
 <div class="no-print">
 <hr>
-<button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+<button type="button" onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
 📋 Copy Row for Spreadsheet
 </button>
-<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+<button type="button" onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
 📄 Print / Save as PDF
 </button>
 <button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
