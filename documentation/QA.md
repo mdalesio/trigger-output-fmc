@@ -125,6 +125,7 @@ and edit `createEEPROMs.sh` with the appropriate serial numbers.
 - [<input type="checkbox">] Look at each of the 16 outputs to ensure compliance.
 
 **Channels Checked:**
+
 | Channel | Status | Channel | Status |
 | :---: | :---: | :---: | :---: |
 | Ch 0  | [<input type="checkbox">] Pass | Ch 8  | [<input type="checkbox">] Pass |
