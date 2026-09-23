@@ -27,6 +27,7 @@ jobs:
     
     # Run if triggered manually OR by push (or if workflow_run succeeded)
     if: |
+      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
 
