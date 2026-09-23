@@ -307,12 +307,12 @@ Complete</strong></li>
 [<input type="radio" name="result" value="FAIL">]
 <strong>FAIL</strong></p>
 <ul>
-<li><strong>Deviations / Waivers / Comments:</strong>
+<li><p><strong>Deviations / Waivers / Comments:</strong></p>
 <textarea rows="3" cols="60" placeholder="Notes..."></textarea></li>
-<li>Record the git commit of <strong>this QA procedure</strong> in the
-Testing Log: <input type="text" placeholder="Git Commit..."></li>
+<li><p>Record the git commit of <strong>this QA procedure</strong> in
+the Testing Log:</p>
+<p><input type="text" placeholder="Git Commit..."></p></li>
 </ul>
-</form>
 <div class="no-print">
 <hr>
 <button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
@@ -320,11 +320,11 @@ Testing Log: <input type="text" placeholder="Git Commit..."></li>
 </button>
 <span id="copy-status" style="margin-left: 10px; color: #28a745; font-weight: bold;"></span>
 <button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
-📄 Print / Save as PDF </button> &lt;button type=“reset” style=“padding:
-10px 20px; font-weight: bold; cursor: pointer; background-color:
-#0366d6; color: white; border: none; border-radius: 4px;&gt;Clear All
-Fields</button>
+📄 Print / Save as PDF </button>
+<button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+🗑️ Clear All Fields </button>
 </div>
+</form>
 <script>
 function copyForSpreadsheet() {
   const data = [];

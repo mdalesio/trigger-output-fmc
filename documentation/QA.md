@@ -145,11 +145,13 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 * [<input type="radio" name="result" value="PASS">] **PASS** / [<input type="radio" name="result" value="FAIL">] **FAIL**
 
 * **Deviations / Waivers / Comments:**
-<textarea rows="3" cols="60" placeholder="Notes..."></textarea>
+
+    <textarea rows="3" cols="60" placeholder="Notes..."></textarea>
 
 * Record the git commit of **this QA procedure** in the Testing Log:
-<input type="text" placeholder="Git Commit...">
-</form>
+
+    <input type="text" placeholder="Git Commit...">
+
 <div class="no-print">
 <hr>
 <button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
@@ -159,8 +161,11 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 <button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
   📄 Print / Save as PDF
 </button>
-<button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;>Clear All Fields</button>
+<button type="reset" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+  🗑️ Clear All Fields
+</button>
 </div>
+</form>
 
 <script>
 function copyForSpreadsheet() {
