@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>QA</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+:root{--nc-font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--nc-font-mono:Consolas,monaco,'Ubuntu Mono','Liberation Mono','Courier New',Courier,monospace;--nc-tx-1:#000000;--nc-tx-2:#1A1A1A;--nc-bg-1:#FFFFFF;--nc-bg-2:#F6F8FA;--nc-bg-3:#E5E7EB;--nc-lk-1:#0070F3;--nc-lk-2:#0366D6;--nc-lk-tx:#FFFFFF;--nc-ac-1:#79FFE1;--nc-ac-tx:#0C4047}@media (prefers-color-scheme:dark){:root{--nc-tx-1:#ffffff;--nc-tx-2:#eeeeee;--nc-bg-1:#000000;--nc-bg-2:#111111;--nc-bg-3:#222222;--nc-lk-1:#3291FF;--nc-lk-2:#0070F3;--nc-lk-tx:#FFFFFF;--nc-ac-1:#7928CA;--nc-ac-tx:#FFFFFF}}*{margin:0;padding:0}address,area,article,aside,audio,blockquote,datalist,details,dl,fieldset,figure,form,iframe,img,input,meter,nav,ol,optgroup,option,output,p,pre,progress,ruby,section,table,textarea,ul,video{margin-bottom:1rem}button,html,input,select{font-family:var(--nc-font-sans)}body{margin:0 auto;max-width:750px;padding:2rem;border-radius:6px;overflow-x:hidden;word-break:break-word;overflow-wrap:break-word;background:var(--nc-bg-1);color:var(--nc-tx-2);font-size:1.03rem;line-height:1.5}::selection{background:var(--nc-ac-1);color:var(--nc-ac-tx)}h1,h2,h3,h4,h5,h6{line-height:1;color:var(--nc-tx-1);padding-top:.875rem}h1,h2,h3{color:var(--nc-tx-1);padding-bottom:2px;margin-bottom:8px;border-bottom:1px solid var(--nc-bg-2)}h4,h5,h6{margin-bottom:.3rem}h1{font-size:2.25rem}h2{font-size:1.85rem}h3{font-size:1.55rem}h4{font-size:1.25rem}h5{font-size:1rem}h6{font-size:.875rem}a{color:var(--nc-lk-1)}a:hover{color:var(--nc-lk-2)}abbr:hover{cursor:help}blockquote{padding:1.5rem;background:var(--nc-bg-2);border-left:5px solid var(--nc-bg-3)}abbr{cursor:help}blockquote :last-child{padding-bottom:0;margin-bottom:0}header{background:var(--nc-bg-2);border-bottom:1px solid var(--nc-bg-3);padding:2rem 1.5rem;margin:-2rem calc(0px - (50vw - 50%)) 2rem;padding-left:calc(50vw - 50%);padding-right:calc(50vw - 50%)}header h1,header h2,header h3{padding-bottom:0;border-bottom:0}header>:first-child{margin-top:0;padding-top:0}header>:last-child{margin-bottom:0}a button,button,input[type=button],input[type=reset],input[type=submit]{font-size:1rem;display:inline-block;padding:6px 12px;text-align:center;text-decoration:none;white-space:nowrap;background:var(--nc-lk-1);color:var(--nc-lk-tx);border:0;border-radius:4px;box-sizing:border-box;cursor:pointer;color:var(--nc-lk-tx)}a button[disabled],button[disabled],input[type=button][disabled],input[type=reset][disabled],input[type=submit][disabled]{cursor:default;opacity:.5;cursor:not-allowed}.button:focus,.button:hover,button:focus,button:hover,input[type=button]:focus,input[type=button]:hover,input[type=reset]:focus,input[type=reset]:hover,input[type=submit]:focus,input[type=submit]:hover{background:var(--nc-lk-2)}code,kbd,pre,samp{font-family:var(--nc-font-mono)}code,kbd,pre,samp{background:var(--nc-bg-2);border:1px solid var(--nc-bg-3);border-radius:4px;padding:3px 6px;font-size:.9rem}kbd{border-bottom:3px solid var(--nc-bg-3)}pre{padding:1rem 1.4rem;max-width:100%;overflow:auto}pre code{background:inherit;font-size:inherit;color:inherit;border:0;padding:0;margin:0}code pre{display:inline;background:inherit;font-size:inherit;color:inherit;border:0;padding:0;margin:0}details{padding:.6rem 1rem;background:var(--nc-bg-2);border:1px solid var(--nc-bg-3);border-radius:4px}summary{cursor:pointer;font-weight:700}details[open]{padding-bottom:.75rem}details[open] summary{margin-bottom:6px}details[open]>:last-child{margin-bottom:0}dt{font-weight:700}dd::before{content:'→ '}hr{border:0;border-bottom:1px solid var(--nc-bg-3);margin:1rem auto}fieldset{margin-top:1rem;padding:2rem;border:1px solid var(--nc-bg-3);border-radius:4px}legend{padding:auto .5rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--nc-bg-3);text-align:left;padding:.5rem}th{background:var(--nc-bg-2)}tr:nth-child(2n){background:var(--nc-bg-2)}table caption{font-weight:700;margin-bottom:.5rem}textarea{max-width:100%}ol,ul{padding-left:2rem}li{margin-top:.4rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}mark{padding:3px 6px;background:var(--nc-ac-1);color:var(--nc-ac-tx)}input,select,textarea{padding:6px 12px;margin-bottom:.5rem;background:var(--nc-bg-2);color:var(--nc-tx-2);border:1px solid var(--nc-bg-3);border-radius:4px;box-shadow:none;box-sizing:border-box}img{max-width:100%}
+</style>
+</head>
+<body>
+<h1 id="trigger-output-fmc-quality-assurance-procedure">Trigger Output
+FMC Quality Assurance Procedure</h1>
+<h2 id="purpose">Purpose</h2>
+<p>The purpose of this document is to have a consistent unified way each
+Board is tested before deployment. This procedure will be updated
+periodically to improve QA of the boards.</p>
+<h2 id="equipment-needed">Equipment needed</h2>
+<ul>
+<li>2 x MMCX to SMA Cables</li>
+<li>2 x SMA to BNC adapters</li>
+<li>1 x SMA to SMA Cable</li>
+<li>Multimeter (Fluke 115 or better)</li>
+<li>Triple output Benchtop Power Supply</li>
+<li>2 x FMC Power breakout module <a href="https://www.iamelectronic.com/shop/produkt/fpga-mezzanine-card-fmc-power-module/">link</a></li>
+<li>Marble Testing Chassis</li>
+<li>PC to run IOC and Phoebus</li>
+</ul>
+<hr />
+<hr />
+<h2 id="procedure">Procedure</h2>
+<h3 id="qa-metadata">QA Metadata</h3>
+<ul>
+<li><strong>Board Serial Number:</strong>
+<input type="text" placeholder="e.g., SN-1042"></li>
+<li><strong>PCB Revision:</strong>
+<input type="text" placeholder="e.g., Rev B"></li>
+</ul>
+<h3 id="visual-inspection">Visual Inspection</h3>
+<p>Check visual for any board defects. If the board has come back from
+rework look at the reworked areas carefully under magnification for any
+shorts etc.</p>
+<p>Areas to check with extra scrutiny are around the clock jitter
+cleaner components.</p>
+<ul>
+<li>[<input type="checkbox">] <strong>Visual Inspection
+Complete</strong> <em>Notes / Defects:</em>
+<input type="text" style="width: 80%;"></li>
+</ul>
+<hr />
+<h3 id="power-testing">Power Testing</h3>
+<p>Next the Board will be powered up in various ways to protect other
+testing hardware.</p>
+<h3 id="looking-for-shorts-to-gnd">Looking for Shorts to GND</h3>
+<p>Using the multimeter check that all voltage test points have a
+resistance to board ground greater than 1kΩ.</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 20%" />
+<col style="width: 29%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Silkscreened Label</th>
+<th>Nominal Voltage</th>
+<th>Measured Resistance (Ω)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VDD3P3V</td>
+<td>+3.3V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="even">
+<td>VADJ</td>
+<td>+2.5V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="odd">
+<td>12P0V</td>
+<td>+12V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="even">
+<td>TP5</td>
+<td>+1.8V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="odd">
+<td>TP6</td>
+<td>+3.3V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="even">
+<td>TP7</td>
+<td>+3.3V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="odd">
+<td>TP8</td>
+<td>+5.45V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+<tr class="even">
+<td>TP9</td>
+<td>+1.8V</td>
+<td><input type="text"></td>
+<td>[<input type="checkbox">] Pass (&gt;1kΩ)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[<input type="checkbox">] <strong>Resistance Check
+Complete</strong></li>
+</ul>
+<hr />
+<h3 id="v3.3v2.5v-power-testing">12V/3.3V/2.5V Power Testing</h3>
+<p>One at a time inject 12V, 3.3V &amp; 2.5V using the voltage test
+points found on the board. Do this with a 1.5A current limit.</p>
+<p>Note variance from nominal current if found.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Rail</th>
+<th>Nominal Expected</th>
+<th>Measured Current</th>
+<th>Notes / Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12V</td>
+<td>~130mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+<tr class="even">
+<td>3.3V</td>
+<td>~70mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+<tr class="odd">
+<td>2.5V</td>
+<td>~4mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[<input type="checkbox">] <strong>Individual Power Test
+Complete</strong></li>
+</ul>
+<hr />
+<h3 id="fmc-breakout-power-testing">FMC breakout Power Testing</h3>
+<p>Using a 3 output power supply and two FMC Power breakout modules:
+Power up all input power rails (12V/3.3V/2.5V) simultaneously.</p>
+<p>Note variance from nominal current if found.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Rail</th>
+<th>Nominal Expected</th>
+<th>Measured Current</th>
+<th>Notes / Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12V</td>
+<td>~130mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+<tr class="even">
+<td>3.3V</td>
+<td>~70mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+<tr class="odd">
+<td>2.5V</td>
+<td>~4mA</td>
+<td><input type="text"></td>
+<td><input type="text"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[<input type="checkbox">] <strong>FMC Breakout Power Test
+Complete</strong></li>
+</ul>
+<hr />
+<h3 id="power-up-with-marble">Power up with Marble</h3>
+<p>Attach a now power tested quartz to a <strong>powered off</strong>
+marble testing chassis.</p>
+<ul>
+<li>[<input type="checkbox">] Power up the testing chassis.</li>
+<li>[<input type="checkbox">] Start the IOC.</li>
+<li>[<input type="checkbox">] Ensure proper readback of diagnostic
+signals (voltage, etc.). <br></li>
+<li>[<input type="checkbox">] <strong>Power Up with Marble
+Complete</strong></li>
+</ul>
+<hr />
+<h3 id="eeprom-programmed">EEPROM Programmed</h3>
+<p>Checkout the branch/revision appropriate to the PCB model to be
+programmed, and edit <code>createEEPROMs.sh</code> with the appropriate
+serial numbers.</p>
+<ul>
+<li><strong>Git Revision / Commit Used:</strong>
+<input type="text"></li>
+<li>[<input type="checkbox">] <strong>EEPROM Programmed
+Complete</strong></li>
+</ul>
+<hr />
+<h3 id="signal-check---clock-routing">Signal Check - Clock Routing</h3>
+<ul>
+<li><p>[<input type="checkbox">] Ensure the chassis under test has an
+EVR input at a nominal 125MHz provided by another chassis</p></li>
+<li><p>[<input type="checkbox">] Route received 125MHz through to the
+first jitter cleaner (U18) using FMC_LA_1 pin pair</p>
+<ul>
+<li>[<input type="checkbox">] Ensure the System can now lock to
+FMC_GBTCLK0</li>
+<li>[<input type="checkbox">] Using the FPGA console run ‘fmon’ to see
+the clock also on FMC_LA_0 signal pair</li>
+</ul></li>
+<li><p>[<input type="checkbox">] Route received 125MHz through to the
+first jitter cleaner (U18) using FMC_LA_18</p>
+<ul>
+<li>[<input type="checkbox">] Ensure the System can now lock to
+FMC_GBTCLK1</li>
+<li>[<input type="checkbox">] Using the FPGA console run ‘fmon’ to see
+the clock also on FMC_LA_17 signal pair</li>
+</ul></li>
+<li><p>[<input type="checkbox">] Ensure that each scenario
+locks</p></li>
+<li><p>[<input type="checkbox">] <strong>Clock Routing Signal Check
+Complete</strong></p></li>
+</ul>
+<hr />
+<h3 id="signal-check---digital-outputs">Signal Check - Digital
+Outputs</h3>
+<ul>
+<li>[<input type="checkbox">] For each Digital Output set up and send an
+event stream turning all outputs on and off at 1Hz.</li>
+<li>[<input type="checkbox">] Force 0/1</li>
+<li>[<input type="checkbox">] Look at each of the 16 outputs to ensure
+compliance.</li>
+</ul>
+<p><strong>Channels Checked:</strong> [<input type="checkbox">] Ch 0  
+[<input type="checkbox">] Ch 1   [<input type="checkbox">] Ch 2  
+[<input type="checkbox">] Ch 3   [<input type="checkbox">] Ch 4  
+[<input type="checkbox">] Ch 5   [<input type="checkbox">] Ch 6  
+[<input type="checkbox">] Ch 7  s [<input type="checkbox">] Ch 8  
+[<input type="checkbox">] Ch 9   [<input type="checkbox">] Ch 10  
+[<input type="checkbox">] Ch 11   [<input type="checkbox">] Ch 12  
+[<input type="checkbox">] Ch 13   [<input type="checkbox">] Ch 14  
+[<input type="checkbox">] Ch 15  </p>
+<ul>
+<li>[<input type="checkbox">] <strong>Digital Outputs Signal Check
+Complete</strong></li>
+</ul>
+<hr />
+<h2 id="startcompletion-validation">Start/Completion Validation</h2>
+<ul>
+<li><strong>Tested Performed By:</strong>
+<input type="text" placeholder="Inspector Name"></li>
+<li><strong>Date Initiated:</strong> <input type="date"></li>
+<li><strong>Date Completed:</strong> <input type="date"></li>
+</ul>
+<h3 id="final-result">Final Result</h3>
+<p>Indicate a Pass/Fail if this performed with no deviations or waivers
+* [<input type="radio" name="result" value="PASS">]
+<strong>PASS</strong> /
+[<input type="radio" name="result" value="FAIL">]
+<strong>FAIL</strong></p>
+<ul>
+<li><strong>Deviations / Waivers / Comments:</strong>
+<textarea rows="3" cols="60" placeholder="Notes..."></textarea></li>
+</ul>
+<div class="no-print">
+<ul>
+<li>Record the git commit of <strong>this QA procedure</strong> in the
+Testing Log: <input type="text" placeholder="Git Commit..."></li>
+</ul>
+<hr>
+<button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
+📋 Copy Row for Spreadsheet
+</button>
+<span id="copy-status" style="margin-left: 10px; color: #28a745; font-weight: bold;"></span>
+<button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
+📄 Print / Save as PDF </button>
+</div>
+<script>
+function copyForSpreadsheet() {
+  const data = [];
+
+  function cleanCell(val) {
+    if (val === null || val === undefined) return '';
+    return String(val).replace(/[\r\n\t]+/g, ' ').trim();
+  }
+
+  // 1. Gather all form controls in DOM order
+  const controls = document.querySelectorAll('input, textarea');
+
+  controls.forEach(control => {
+    // Skip radio buttons that aren't checked
+    if (control.type === 'radio' && !control.checked) return;
+
+    // Capture checkbox state
+    if (control.type === 'checkbox') {
+      data.push(control.checked ? 'PASS' : 'UNCHECKED');
+      return;
+    }
+
+    // Capture text, date, textarea, and selected radio value
+    data.push(cleanCell(control.value));
+  });
+
+  const tsvRow = data.join('\t');
+
+  // 2. Robust Copy Mechanism
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(tsvRow).then(showSuccess).catch(fallbackCopy);
+  } else {
+    fallbackCopy();
+  }
+
+  // Fallback clipboard copy mechanism for browser environments where the modern Async Clipboard API (navigator.clipboard.writeText) is unavailable or blocked—such as local file:// protocols, older browsers, or unsecure contexts (http://)
+  function fallbackCopy() {
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = tsvRow;
+    tempTextArea.style.position = 'fixed';
+    tempTextArea.style.left = '-9999px';
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    try {
+      document.execCommand('copy');
+      showSuccess();
+    } catch (err) {
+      alert('Failed to copy: ' + err);
+    }
+    document.body.removeChild(tempTextArea);
+  }
+
+  function showSuccess() {
+    const status = document.getElementById('copy-status');
+    status.textContent = 'Copied to clipboard!';
+    setTimeout(() => { status.textContent = ''; }, 3000);
+  }
+}
+</script>
+<style>
+@media print {
+
+.no-print, nav, header, footer {
+display: none !important;
+}
+
+body {
+font-size: 11pt;
+line-height: 1.2;
+color: #000;
+}
+
+input[type="text"], input[type="date"], textarea {
+border: none !important;
+border-bottom: 1px solid #000 !important;
+background: transparent !important;
+}
+
+table {
+page-break-inside: avoid;
+width: 100%;
+border-collapse: collapse;
+}
+}
+</style>
+</body>
+</html>

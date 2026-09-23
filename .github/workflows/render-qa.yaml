@@ -1,0 +1,42 @@
+name: Render QA HTML on Markdown Change
+
+on:
+  push:
+    branches: [ main, Add-QA ]
+    paths:
+      - 'documentation/QA.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-amend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch history so we can amend
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Convert QA.md to HTML
+        run: |
+          pandoc documentation/QA.md \
+            --standalone \
+            --embed-resources \
+            -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
+            -o documentation/QA.html
+
+      - name: Amend Last Commit with QA.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add documentation/QA.html
+          # Only commit if QA.html changed
+          if ! git diff --cached --quiet; then
+            git commit --amend --no-edit
+            git push --force-with-lease
+          fi
