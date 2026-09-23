@@ -1,6 +1,8 @@
 name: QA Procedure HTML Build
 
 on:
+  push:
+    branches: [ Add-QA ] # Enables isolated testing on Add-QA
   workflow_run:
     workflows: ["Automation"] # KiBot workflow
     types:
@@ -16,7 +18,7 @@ permissions:
 
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy-qa:
@@ -25,7 +27,6 @@ jobs:
     
     # Run if triggered manually OR by push (or if workflow_run succeeded)
     if: |
-      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
 
@@ -42,13 +43,13 @@ jobs:
       - name: Prepare Output Directory
         run: mkdir -p output
 
-      #- name: Download KiBot Fab Artifact
-      #  uses: actions/download-artifact@v4
-      #  with:
-      #    name: Everything
-      #    path: output
-      #    github-token: ${{ secrets.GITHUB_TOKEN }}
-      #    run-id: ${{ github.event.workflow_run.id }}
+      - name: Download KiBot Fab Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Everything
+          path: output
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Install Pandoc
         run: |
