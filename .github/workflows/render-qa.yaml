@@ -3,57 +3,16 @@ name: QA Procedure HTML Build
 on:
   push:
     branches: [ Add-QA ] # Enables isolated testing on Add-QA
-  workflow_run:
-    workflows: ["Automation"] # KiBot workflow
-    types:
-      - completed
-    branches:
-      - main
-      - Add-QA
   workflow_dispatch: # Allows manual run if needed
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy-qa:
-    name: Build QA & Deploy to Pages
+  build-qa-html:
+    name: Build QA HTML File
     runs-on: ubuntu-latest
     
-    # Run if triggered manually OR by push (or if workflow_run succeeded)
-    if: |
-      github.event_name == 'push' ||
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      # NOTE: For testing on Add-QA without running KiBot first,
-      # create the output directory so pandoc step doesn't fail
-      - name: Create Output Directory
-        run: mkdir -p output
-
-      - name: Download KiBot Fab Artifact
-        if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v4
-        with:
-          name: Everything
-          path: output
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Install Pandoc
         run: |
@@ -62,17 +21,14 @@ jobs:
 
       - name: Convert QA.md to HTML
         run: |
-          mkdir -p output/qa
           pandoc documentation/QA.md \
             --standalone \
+            --embed-resources \
             -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
-            -o output/qa/index.html
+            -o documentation/QA.html
 
-      - name: Upload Combined Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
         with:
-          path: output/
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          name: QA-Document-HTML
+          path: documentation/QA.html
