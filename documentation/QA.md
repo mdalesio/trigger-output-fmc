@@ -14,7 +14,7 @@ The purpose of this document is to have a consistent unified way each Board is t
 
 ***
 ***
-
+<form onsubmit="return false">
 ## Procedure
 
 ### QA Metadata
@@ -147,10 +147,10 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 * **Deviations / Waivers / Comments:**
 <textarea rows="3" cols="60" placeholder="Notes..."></textarea>
 
-<div class="no-print">
 * Record the git commit of **this QA procedure** in the Testing Log:
 <input type="text" placeholder="Git Commit...">
-
+</form>
+<div class="no-print">
 <hr>
 <button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
   📋 Copy Row for Spreadsheet
@@ -159,6 +159,7 @@ Indicate a Pass/Fail if this performed with no deviations or waivers
 <button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
   📄 Print / Save as PDF
 </button>
+<button type="reset">Clear All Fields</button>
 </div>
 
 <script>

@@ -45,6 +45,7 @@ periodically to improve QA of the boards.</p>
 </ul>
 <hr />
 <hr />
+<form onsubmit="return false">
 <h2 id="procedure">Procedure</h2>
 <h3 id="qa-metadata">QA Metadata</h3>
 <ul>
@@ -308,19 +309,19 @@ Complete</strong></li>
 <ul>
 <li><strong>Deviations / Waivers / Comments:</strong>
 <textarea rows="3" cols="60" placeholder="Notes..."></textarea></li>
-</ul>
-<div class="no-print">
-<ul>
 <li>Record the git commit of <strong>this QA procedure</strong> in the
 Testing Log: <input type="text" placeholder="Git Commit..."></li>
 </ul>
+</form>
+<div class="no-print">
 <hr>
 <button onclick="copyForSpreadsheet()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #0366d6; color: white; border: none; border-radius: 4px;">
 📋 Copy Row for Spreadsheet
 </button>
 <span id="copy-status" style="margin-left: 10px; color: #28a745; font-weight: bold;"></span>
 <button onclick="window.print()" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
-📄 Print / Save as PDF </button>
+📄 Print / Save as PDF </button> <button type="reset">Clear All
+Fields</button>
 </div>
 <script>
 function copyForSpreadsheet() {
