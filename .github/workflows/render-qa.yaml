@@ -1,23 +1,26 @@
-name: QA Procedure HTML Build
+name: Render QA HTML on Markdown Change
 
 on:
   push:
-    branches: [ Add-QA ] # Enables isolated testing on Add-QA
-  workflow_dispatch: # Allows manual run if needed
+    branches: [ main, Add-QA ]
+    paths:
+      - 'documentation/QA.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build-qa-html:
-    name: Build QA HTML File
+  render-and-amend:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch history so we can amend
 
       - name: Install Pandoc
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
+          sudo apt-get update && sudo apt-get install -y pandoc
 
       - name: Convert QA.md to HTML
         run: |
@@ -27,8 +30,13 @@ jobs:
             -c "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" \
             -o documentation/QA.html
 
-      - name: Upload HTML artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: QA-Document-HTML
-          path: documentation/QA.html
+      - name: Amend Last Commit with QA.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add documentation/QA.html
+          # Only commit if QA.html changed
+          if ! git diff --cached --quiet; then
+            git commit --amend --no-edit
+            git push --force-with-lease
+          fi
